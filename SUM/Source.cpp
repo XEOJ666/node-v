@@ -1,22 +1,42 @@
 #include<stdio.h>
+void getStr(char*);
+void node(char*);
 int main()
 {
 	char str[21];
-	scanf_s("%[^\n]s", str, 21);
-	if ((str[0] == 'n' or str[0] == 'N') && (str[1] == 'o' or str[1] == 'O') && (str[2] == 'd' or str[2] == 'D') && (str[3] == 'e' or str[3] == 'E'))
+	char* pStr = str;
+
+	getStr(pStr);
+	node(pStr);
+	
+	return 0;
+}
+void getStr(char* pA) {
+	scanf_s("%[^\n]s", pA, 20);
+}
+
+
+void node(char* pB)
+{
+	if ((*pB == 'n' or *pB == 'N') && (*(pB + 1) == 'o' or *(pB + 1) == 'O') && (*(pB + 2) == 'd' or *(pB + 2) == 'D') && (*(pB + 3) == 'e' or *(pB + 3) == 'E'))
 	{
 		int i = 4;
-		while (str[i] == ' ')
+		while (*(pB + i) == ' ')
 		{
 			i++;
 		}
-		if (str[i] == '-' && str[i + 1] == 'v')
+		if (*(pB + i) == '-' && *(pB + i + 1) == 'v')
 		{
 			printf("ture");
-			return 0;
+		}
+		else
+		{
+			printf("false");
 		}
 	}
-	printf("false");
-	return 0;
-}
+	else
+	{
+		printf("false");
+	}
 	
+}
